@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200229074553) do
+ActiveRecord::Schema.define(version: 20200502052757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,23 @@ ActiveRecord::Schema.define(version: 20200229074553) do
   end
 
   add_index "capturing_saga_states", ["order_id"], name: "index_capturing_saga_states_on_order_id", unique: true, using: :btree
+
+  create_table "dres_rails_queue_jobs", force: :cascade do |t|
+    t.integer "queue_id", null: false
+    t.string  "event_id", null: false
+    t.string  "state",    null: false
+  end
+
+  add_index "dres_rails_queue_jobs", ["queue_id", "event_id"], name: "index_dres_rails_queue_jobs_on_queue_id_and_event_id", using: :btree
+
+  create_table "dres_rails_queues", force: :cascade do |t|
+    t.string   "name",                    null: false
+    t.string   "last_processed_event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dres_rails_queues", ["name"], name: "index_dres_rails_queues_on_name", unique: true, using: :btree
 
   create_table "event_store_events", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.string   "event_type", null: false

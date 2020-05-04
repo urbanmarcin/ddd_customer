@@ -1,0 +1,2 @@
+worker: DRES_URL=http://localhost:3000/res_events DRES_API_KEY=daa bundle exec rails r dres_start.rb
+web: bundle exec rails s -p 5001
