@@ -1,11 +1,11 @@
 PATH
-  remote: ../dres_client
+  remote: dres_client
   specs:
     dres_client (0.6.0)
       ruby_event_store (~> 0.28)
 
 PATH
-  remote: ../dres_rails
+  remote: dres_rails
   specs:
     dres_rails (0.6.0)
       rails (>= 4.2, < 6)

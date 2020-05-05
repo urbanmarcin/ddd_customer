@@ -55,5 +55,5 @@ end
 
 
 gem 'rails_event_store', '~> 0.42.0'
-gem 'dres_rails',  '~> 0.6.0', path: '../dres_rails'
-gem 'dres_client',  '~> 0.6.0', path: '../dres_client'
+gem 'dres_rails',  '~> 0.6.0', path: './dres_rails'
+gem 'dres_client',  '~> 0.6.0', path: './dres_client'
