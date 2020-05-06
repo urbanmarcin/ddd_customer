@@ -13,7 +13,13 @@ client = DresClient::Http.new(
 )
 
 handlers = [
-  ->(event) { logger.info("got event: #{event}") }
+  ->(event) {
+
+    Rails.configuration.event_store.publish(event)
+    logger.info("got event!!!!: #{event}")
+    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+
+  }
 ]
 
 app = DresApp.new(
